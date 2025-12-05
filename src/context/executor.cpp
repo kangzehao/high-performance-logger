@@ -88,7 +88,7 @@ RepeatedTaskID Executor::ExecutorTimer::PostRepeatedTask(Task task,
         std::lock_guard<std::mutex> lock(repeated_task_id_set_mutex_);
         repeated_task_id_set_.insert(id);
     }
-    LOG_DEBUG("id: {}, interval__time: {}", id, interval__time);
+    // LOG_DEBUG("id: {}, interval__time: {}", id, interval__time);
     PostRepeatedTask(std::move(task), interval__time, id, repeat_num);
     return id;
 }
