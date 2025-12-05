@@ -10,10 +10,18 @@ class Requirements(ConanFile):
 
     def requirements(self):
         self.requires("fmt/11.0.2")
+        self.requires("gtest/1.14.0")
+        self.requires("zlib/1.2.13")
+        self.requires("zstd/1.5.6")
         
 
     def configure(self):
         self.options["fmt"].shared = False
+
+        self.options["gtest"].shared = False
+
+        self.options["zlib"].shared = False
+        self.options["zstd"].shared = False
         
 
     def build(self):

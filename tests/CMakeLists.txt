@@ -1,12 +1,15 @@
 ﻿set(LOGGER_VERSION "logger-test")
+
 include_directories(
     ${PROJECT_SOURCE_DIR}/src
 )
 
 set(TEST 
-    #test_mmap.cpp
-    #test_thread_pool.cpp
+    test_mmap.cpp
+    test_thread_pool.cpp
     test_context.cpp
+    test_compress.cpp
+    tset_main.cpp
 )
 
 add_executable(${LOGGER_VERSION} ${TEST})

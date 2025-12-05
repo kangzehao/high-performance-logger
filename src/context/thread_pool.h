@@ -76,7 +76,7 @@ public:
 
         cv_.notify_one();
 
-        return std::move(res);  // future无法拷贝，可以移动返回或者返回一个共享指针对象
+        return res;  // 返回值优化可以移动返回
     }
 
 private:

@@ -2,6 +2,8 @@
 include_directories(
     ${PROJECT_SOURCE_DIR}/src
     ${PROJECT_SOURCE_DIR}/src/mmap
+    ${PROJECT_SOURCE_DIR}/src/context
+    ${PROJECT_SOURCE_DIR}/src/compress
     ${PROJECT_SOURCE_DIR}/src/utils
 )
 
@@ -20,10 +22,13 @@ endif()
 
 set(CONTEXT_SRCS context/thread_pool.cpp context/executor.cpp context/context.cpp)
 
+set(COMPRESS_SRCS compress/zlib_compress.cpp compress/zstd_compress.cpp)
+
 set(SRCS
     ${MMAP_SRCS}
     ${UTIL_SRCS}
     ${CONTEXT_SRCS}
+    ${COMPRESS_SRCS}
     
 )
 
