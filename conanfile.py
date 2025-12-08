@@ -13,6 +13,7 @@ class Requirements(ConanFile):
         self.requires("gtest/1.14.0")
         self.requires("zlib/1.2.13")
         self.requires("zstd/1.5.6")
+        self.requires("cryptopp/8.9.0")
         
 
     def configure(self):
@@ -22,6 +23,8 @@ class Requirements(ConanFile):
 
         self.options["zlib"].shared = False
         self.options["zstd"].shared = False
+
+        self.options["cryptopp"].shared = False
         
 
     def build(self):

@@ -14,7 +14,7 @@ public:
 
     virtual size_t CompressBound(size_t input_size) = 0;  // 计算压缩后的大小
 
-    virtual std::string DeCompress() = 0;  // 解压缩
+    virtual std::string DeCompress(const void* input, size_t input_size) = 0;  // 解压缩
 
     virtual void ResetStream() = 0;  // 重置状态
 };
