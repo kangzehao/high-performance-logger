@@ -33,9 +33,12 @@ endif()
 
 add_subdirectory(${PROJECT_SOURCE_DIR}/src)
 
+add_subdirectory(${PROJECT_SOURCE_DIR}/examples)
+
 if("$ENV{LOGGER_VERSION}" STREQUAL "")
     # 启用测试
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address -g")
     enable_testing()
     add_subdirectory(${PROJECT_SOURCE_DIR}/tests)
+
 endif()

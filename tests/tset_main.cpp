@@ -1,4 +1,4 @@
-#include <gtest/gtest>
+#include <gtest/gtest.h>
 
 #include "internal_log.h"
 

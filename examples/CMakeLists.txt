@@ -1,4 +1,4 @@
-﻿set(LOGGER_VERSION "logger-test")
+﻿set(LOGGER_VERSION "logger-example")
 
 include_directories(
     ${PROJECT_SOURCE_DIR}/src
@@ -11,17 +11,11 @@ include_directories(
     ${PROJECT_SOURCE_DIR}/src/sinks
 )
 
-set(TEST 
-    test_mmap.cpp
-    test_thread_pool.cpp
-    test_context.cpp
-    test_compress.cpp
-    test_crypt.cpp
-    test_log_factory.cpp
-    tset_main.cpp
+set(EXAMPLE 
+    logger_example.cpp
 )
 
-add_executable(${LOGGER_VERSION} ${TEST})
+add_executable(${LOGGER_VERSION} ${EXAMPLE})
 target_link_libraries(${LOGGER_VERSION} ${CONANDEPS_LEGACY} logger stdc++fs)
 
 install(TARGETS ${LOGGER_VERSION} RUNTIME DESTINATION bin)

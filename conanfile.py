@@ -14,6 +14,7 @@ class Requirements(ConanFile):
         self.requires("zlib/1.2.13")
         self.requires("zstd/1.5.6")
         self.requires("cryptopp/8.9.0")
+        self.requires("protobuf/3.21.12")
         
 
     def configure(self):
@@ -26,6 +27,8 @@ class Requirements(ConanFile):
 
         self.options["cryptopp"].shared = False
         
+        self.options["protobuf"].shared = False
+        self.options["protobuf"].lite = True
 
     def build(self):
         cmake = CMake(self)
