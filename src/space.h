@@ -4,7 +4,7 @@
 #include <cstddef>
 
 namespace logger {
-
+// 数值类型 单位
 template <class _Rep, class _Capacity = std::ratio<1>>
 class space;
 

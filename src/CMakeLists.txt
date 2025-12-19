@@ -41,9 +41,9 @@ set(PROTO_SRCS ${CMAKE_BINARY_DIR}/src/proto/effective_msg.pb.cc)
 message(STATUS "Generated source: ${PROTO_SRCS}")
 message(STATUS "Generated header: ${PROTO_HDRS}")
 
-set(FORMATTER_SRCS formatter/default_formatter.cpp)
+set(FORMATTER_SRCS formatter/default_formatter.cpp formatter/effective_formatter.cpp)
 
-set(SINKS_SRCS sinks/console_sink.cpp)
+set(SINKS_SRCS sinks/console_sink.cpp sinks/effective_sink.cpp)
 
 set(SRCS
     ${MMAP_SRCS}

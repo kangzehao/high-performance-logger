@@ -1,7 +1,12 @@
 ﻿cmake_minimum_required(VERSION 3.16)
 project(logger)
 
-add_definitions(-DENABLE_LOG=1)
+if(NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE Release)
+    message(STATUS "No build type selected, defaulting to ${CMAKE_BUILD_TYPE}")
+endif()
+
+#add_definitions(-DENABLE_LOG=1)
 
 include(${CMAKE_CURRENT_LIST_DIR}/build/conandeps_legacy.cmake)
 
@@ -35,10 +40,20 @@ add_subdirectory(${PROJECT_SOURCE_DIR}/src)
 
 add_subdirectory(${PROJECT_SOURCE_DIR}/examples)
 
+add_subdirectory(${PROJECT_SOURCE_DIR}/decode)
+
+add_subdirectory(${PROJECT_SOURCE_DIR}/benchmark)
+
 if("$ENV{LOGGER_VERSION}" STREQUAL "")
-    # 启用测试
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address -g")
     enable_testing()
     add_subdirectory(${PROJECT_SOURCE_DIR}/tests)
+endif()
 
+string(TOUPPER "${CMAKE_BUILD_TYPE}" UPPERCASE_BUILD_TYPE)
+
+if(UPPERCASE_BUILD_TYPE STREQUAL "DEBUG")
+    message(STATUS "Build Type is Debug: Enabling ASan and -g")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address -g")
+else()
+    message(STATUS "Build Type is ${CMAKE_BUILD_TYPE}: ASan DISABLED for performance")
 endif()

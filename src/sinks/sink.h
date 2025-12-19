@@ -13,6 +13,6 @@ public:
 
     virtual void Log(const LogMsg& msg) = 0;
     virtual void SetFormatter(std::unique_ptr<Formatter> formatter) = 0;
-    virtual void flush() {}
+    virtual void Flush() {}
 };
 }  // namespace logger

@@ -33,6 +33,8 @@ public:
         return Size() == 0;
     }
 
+    double GetRatio() const;
+
 private:
     struct MMapHeader {
         static constexpr uint32_t kMagic = 0xdeadbeef;

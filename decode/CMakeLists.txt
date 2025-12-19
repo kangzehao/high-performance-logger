@@ -1,4 +1,4 @@
-﻿set(LOGGER_VERSION "logger-example")
+﻿set(LOGGER_VERSION "logger-decode")
 
 include_directories(
     ${PROJECT_SOURCE_DIR}/src
@@ -9,14 +9,18 @@ include_directories(
     ${PROJECT_SOURCE_DIR}/src/utils
     ${PROJECT_SOURCE_DIR}/src/formatter
     ${PROJECT_SOURCE_DIR}/src/sinks
+    ${PROJECT_SOURCE_DIR}/decode
     ${CMAKE_BINARY_DIR}/src
 )
 
-set(EXAMPLE 
-    logger_example.cpp
+set(DECODE 
+
+    decode.cpp
+    decode_formatter.cpp
+
 )
 
-add_executable(${LOGGER_VERSION} ${EXAMPLE})
+add_executable(${LOGGER_VERSION} ${DECODE})
 target_link_libraries(${LOGGER_VERSION} ${CONANDEPS_LEGACY} logger stdc++fs)
 
 install(TARGETS ${LOGGER_VERSION} RUNTIME DESTINATION bin)

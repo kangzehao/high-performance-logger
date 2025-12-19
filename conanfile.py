@@ -9,12 +9,17 @@ class Requirements(ConanFile):
     generators = "CMakeDeps", "CMakeToolchain"
 
     def requirements(self):
-        self.requires("fmt/11.0.2")
+        self.requires("fmt/11.0.2",override=True)
         self.requires("gtest/1.14.0")
         self.requires("zlib/1.2.13")
         self.requires("zstd/1.5.6")
         self.requires("cryptopp/8.9.0")
         self.requires("protobuf/3.21.12")
+
+        self.requires("benchmark/1.8.3")
+
+        #性能对比库
+        self.requires("spdlog/1.12.0")
         
 
     def configure(self):
@@ -29,6 +34,9 @@ class Requirements(ConanFile):
         
         self.options["protobuf"].shared = False
         self.options["protobuf"].lite = True
+
+        self.options["benchmark"].shared = False
+        self.options["spdlog"].shared = False
 
     def build(self):
         cmake = CMake(self)

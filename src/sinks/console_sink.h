@@ -14,7 +14,7 @@ public:
 
     void Log(const LogMsg& msg) override;
     void SetFormatter(std::unique_ptr<Formatter> formatter) override;
-    // void flush() {}
+    // void Flush() {}
 
 private:
     std::unique_ptr<Formatter> formatter_ptr_;

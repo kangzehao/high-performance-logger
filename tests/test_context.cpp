@@ -11,7 +11,7 @@ using namespace logger::ctx;
 class ContextTest : public ::testing::Test {
 protected:
     void SetUp() override {
-        ctx_ = Context::GetIntance();
+        ctx_ = Context::GetInstance();
         executor_ = ctx_->GetExecutor();
         tag_ = ctx_->CreateNewTaskRunner();
     }

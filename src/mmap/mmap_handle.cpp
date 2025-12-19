@@ -139,4 +139,14 @@ bool MMapHandle::IsValid() const {
     }
     return header->magic == MMapHeader::kMagic;
 }
+
+double MMapHandle::GetRatio() const {
+    if (!IsValid()) {
+        return 0.0;
+    }
+
+    double payload = static_cast<double>(Size());
+    double cap = static_cast<double>(Capacity() - sizeof(MMapHeader));
+    return cap > 0.0 ? payload / cap : 0.0;
+}
 }  // namespace logger

@@ -17,9 +17,9 @@ public:
     Context(Context&& other) = delete;
     Context& operator=(Context&& other) = delete;
 
-    static Context* GetIntance() {
-        static Context* intance = new Context();
-        return intance;
+    static Context* GetInstance() {
+        static Context* instance = new Context();
+        return instance;
     }
     Executor* GetExecutor() const;
     TaskRunnerTag CreateNewTaskRunner() const;
@@ -41,7 +41,7 @@ private:
 
 #define POST_TASK(runner_tag, task) EXECUTOR->PostTask(runner_tag, task)
 
-#define WAIT_TASK_IDLE(runner_tag) EXECUTOR->PostTaskAndGetResult(runner_tag, []() {})->wait()
+#define WAIT_TASK_IDLE(runner_tag) EXECUTOR->PostTaskAndGetResult(runner_tag, []() {}).wait()
 
 #define POST_REPEATED_TASK(runner_tag, task, interval__time, repeat_num) \
-    EXECUTOR->PostRepeatedTask(runner_tag, task, delta, repeat_num)
+    EXECUTOR->PostRepeatedTask(runner_tag, task, interval__time, repeat_num)
